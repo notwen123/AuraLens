@@ -59,42 +59,42 @@ graph TD
 
 ## Core Components:
 
-Brain: DGrid Unified LLM Gateway (model consensus + fallback).
-Memory: Unibase_AI for long-term trade history and learning.
-Identity: Pieverse on-chain agent identity (NFT-style).
-Execution: Permissioned wallet with spending caps (max 1% per trade) + timelocks.
-Payments: Pieverse x402b for gasless LLM + gas fees + receipt generation.
-Treasury: $AURA token + 5% performance fee flywheel.
+-Brain: DGrid Unified LLM Gateway (model consensus + fallback).
+-Memory: Unibase_AI for long-term trade history and learning.
+-Identity: Pieverse on-chain agent identity (NFT-style).
+-Execution: Permissioned wallet with spending caps (max 1% per trade) + timelocks.
+-Payments: Pieverse x402b for gasless LLM + gas fees + receipt generation.
+-Treasury: $AURA token + 5% performance fee flywheel.
 
 ## Workflow (End-to-End Autonomous Cycle)
 
-Signal Ingestion → Analyst Agent pulls real-time Four.meme + market data via DGrid.
-Decision Making → Multi-model consensus (Llama 3 for TA + GPT-4 for sentiment). Reasoning logged on-chain.
-Risk Check → Compliance Agent verifies against spending caps and rules.
-Execution → Executor opens/closes perp position on MYX V2.
-Settlement → If profitable: Pieverse x402b generates auditable Profit-Sharing Invoice + gasless payment for LLM fees.
-Value Flywheel → 5% performance fee used to buy back $AURA on Four.meme.
-Memory Update → Unibase stores outcome for continuous improvement.
+-Signal Ingestion → Analyst Agent pulls real-time Four.meme + market data via DGrid.
+-Decision Making → Multi-model consensus (Llama 3 for TA + GPT-4 for sentiment). Reasoning logged on-chain.
+-Risk Check → Compliance Agent verifies against spending caps and rules.
+-Execution → Executor opens/closes perp position on MYX V2.
+-Settlement → If profitable: Pieverse x402b generates auditable Profit-Sharing Invoice + gasless payment for LLM fees.
+-Value Flywheel → 5% performance fee used to buy back $AURA on Four.meme.
+-Memory Update → Unibase stores outcome for continuous improvement.
 
-All actions are visible on BNB Chain explorers.
-Bounty & Track Alignment (100% Coverage)
-MYX Finance Bounty ($5,000 USDT) — Fully Covered
+-All actions are visible on BNB Chain explorers.
+-Bounty & Track Alignment (100% Coverage)
+### MYX Finance Bounty ($5,000 USDT) — Fully Covered
 
-AuraLens uses MYX V2 as the execution engine.
-Acts as an Autonomous Market Maker: sentiment analysis dynamically adjusts liquidity depth.
-Opens real perp positions on $AURA or major pairs — direct AI-driven liquidity and trading utility.
+-AuraLens uses MYX V2 as the execution engine.
+-Acts as an Autonomous Market Maker: sentiment analysis dynamically adjusts liquidity depth.
+-Opens real perp positions on $AURA or major pairs — direct AI-driven liquidity and trading utility.
 
-Pieverse Bounty ($2,000 USDT) — Fully Covered
+### Pieverse Bounty ($2,000 USDT) — Fully Covered
 
-Registered "MYX Quant-Trading Skill" in Pieverse Skill Store.
-Uses Purr-Fect Claw (x402b) for gasless agent payments (LLM + gas fees).
-Every trade generates on-chain auditable receipts/invoices — solves compliance perfectly.
+-Registered "MYX Quant-Trading Skill" in Pieverse Skill Store.
+-Uses Purr-Fect Claw (x402b) for gasless agent payments (LLM + gas fees).
+-Every trade generates on-chain auditable receipts/invoices — solves compliance perfectly.
 
-DGrid AI Gateway Bounty (3,000 Credits) — Fully Covered
+### DGrid AI Gateway Bounty (3,000 Credits) — Fully Covered
 
-Uses DGrid Unified LLM API exclusively.
-Implements Model Consensus (Llama 3 + GPT-4 switching) proving model-agnostic resilience.
-All LLM calls logged in repo — demonstrates production-grade usage.
+-Uses DGrid Unified LLM API exclusively.
+-Implements Model Consensus (Llama 3 + GPT-4 switching) proving model-agnostic resilience.
+-All LLM calls logged in repo — demonstrates production-grade usage.
 
 ## Tracks Completed:
 
