@@ -57,7 +57,7 @@ graph TD
 ```
 
 
-Core Components:
+## Core Components:
 
 Brain: DGrid Unified LLM Gateway (model consensus + fallback).
 Memory: Unibase_AI for long-term trade history and learning.
@@ -66,7 +66,7 @@ Execution: Permissioned wallet with spending caps (max 1% per trade) + timelocks
 Payments: Pieverse x402b for gasless LLM + gas fees + receipt generation.
 Treasury: $AURA token + 5% performance fee flywheel.
 
-Workflow (End-to-End Autonomous Cycle)
+## Workflow (End-to-End Autonomous Cycle)
 
 Signal Ingestion → Analyst Agent pulls real-time Four.meme + market data via DGrid.
 Decision Making → Multi-model consensus (Llama 3 for TA + GPT-4 for sentiment). Reasoning logged on-chain.
@@ -96,36 +96,13 @@ Uses DGrid Unified LLM API exclusively.
 Implements Model Consensus (Llama 3 + GPT-4 switching) proving model-agnostic resilience.
 All LLM calls logged in repo — demonstrates production-grade usage.
 
-Tracks Completed:
+## Tracks Completed:
 
 Primary: Autonomous Workflows (sovereign agent treasury + trading).
 Secondary: AI Creator Tools (skill registration + verifiable execution).
 Bonus: AI x Internet Culture (Four.meme-native sentiment + meme-perp focus).
 
-Why AuraLens Wins 1st Place
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Why AuraLens Wins 1st Place
 
 
 Judging CriteriaHow AuraLens DominatesInnovation (30%)First complete sovereign hedge fund agent with profit-sharing flywheel + meme-native intelligenceTechnical Implementation (30%)Triple bounty integrations + multi-agent + permissioned wallet + on-chain proofsPractical Value (20%)Real revenue model (5% fee → buyback), auditability, and VC-ready infrastructurePresentation (20%)Live on-chain demo + clear pitch + full audit dashboard
@@ -134,7 +111,7 @@ Sweeps all three partner bounties in a single submission.
 Solves real 2026 market gaps (security, compliance, reliability).
 Positions as a full company, not just a demo — ready for incubation and funding.
 
-Tech Stack
+## Tech Stack
 
 Chain: BNB Chain (Four.meme + MYX V2)
 AI: DGrid Unified Gateway + Unibase persistent memory
@@ -143,7 +120,7 @@ Smart Contracts: Solidity (permissioned wallet, event logs)
 Frontend: Simple audit dashboard (Next.js)
 Deployment: Fully open-source, audited permissions
 
-Demo & Submission Proofs
+## Demo & Submission Proofs
 
  $AURA token launched on Four.meme
  MYX V2 perp position opened (live transaction)
@@ -152,7 +129,7 @@ Demo & Submission Proofs
  On-chain audit trail + $AURA buyback example
  90-second demo video showing full cycle
 
-Future Roadmap & Revenue Model
+## Future Roadmap & Revenue Model
 
 Short-term: Open-source agent template so anyone can deploy their own AuraLens clone.
 Medium-term: Staking dashboard — $AURA holders earn proportional profits.
