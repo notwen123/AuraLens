@@ -1,7 +1,7 @@
 /**
  * MYX V2 Perpetuals Provider
- * Handles position opening/closing and liquidity depth adjustment on BNB Chain.
- * Uses viem for all on-chain interactions.
+ * Handles position opening/closing and liquidity depth adjustment.
+ * Supports both BSC Testnet (dev) and BSC Mainnet (prod) via BNB_NETWORK env.
  */
 
 import { IAgentRuntime, elizaLogger } from "@elizaos/core";
@@ -13,10 +13,25 @@ import {
     formatUnits,
     type Hex,
     type Address,
+    defineChain,
 } from "viem";
-import { bsc } from "viem/chains";
+import { bsc, bscTestnet } from "viem/chains";
 import { privateKeyToAccount } from "viem/accounts";
 import type { MYXPosition, MYXTradeResult, TradeSignal } from "../types.js";
+
+// ── Network helpers ───────────────────────────────────────────────────────────
+
+function getChain(runtime: IAgentRuntime) {
+    const network = runtime.getSetting("BNB_NETWORK") ?? "testnet";
+    return network === "mainnet" ? bsc : bscTestnet;
+}
+
+function getDefaultRpc(runtime: IAgentRuntime) {
+    const network = runtime.getSetting("BNB_NETWORK") ?? "testnet";
+    return network === "mainnet"
+        ? "https://bsc-dataseed.binance.org"
+        : "https://data-seed-prebsc-1-s1.binance.org:8545";
+}
 
 // MYX V2 contract ABIs (minimal — only what we need)
 const MYX_ROUTER_ABI = [
@@ -82,21 +97,22 @@ const PRICE_FEED_ABI = [
 
 function getClients(runtime: IAgentRuntime) {
     const rpcUrl =
-        runtime.getSetting("BNB_RPC_URL") ?? "https://bsc-dataseed.binance.org";
+        runtime.getSetting("BNB_RPC_URL") ?? getDefaultRpc(runtime);
     const privateKey = runtime.getSetting("BNB_PRIVATE_KEY") as Hex;
 
     if (!privateKey) throw new Error("BNB_PRIVATE_KEY not set");
 
     const account = privateKeyToAccount(privateKey);
+    const chain = getChain(runtime);
 
     const publicClient = createPublicClient({
-        chain: bsc,
+        chain,
         transport: http(rpcUrl),
     });
 
     const walletClient = createWalletClient({
         account,
-        chain: bsc,
+        chain,
         transport: http(rpcUrl),
     });
 
