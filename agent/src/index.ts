@@ -64,6 +64,7 @@ import { abstractPlugin } from "@elizaos/plugin-abstract";
 import { avalanchePlugin } from "@elizaos/plugin-avalanche";
 import { webSearchPlugin } from "@elizaos/plugin-web-search";
 import { echoChamberPlugin } from "@elizaos/plugin-echochambers";
+import { auraLensPlugin } from "@elizaos/plugin-bnb-auralens";
 import Database from "better-sqlite3";
 import fs from "fs";
 import path from "path";
@@ -608,6 +609,11 @@ export async function createAgent(
             getSecret(character, "ECHOCHAMBERS_API_URL") &&
             getSecret(character, "ECHOCHAMBERS_API_KEY")
                 ? echoChamberPlugin
+                : null,
+            // AuraLens — load when BNB keys are present
+            getSecret(character, "BNB_PRIVATE_KEY") &&
+            getSecret(character, "DGRID_API_KEY")
+                ? auraLensPlugin
                 : null,
         ].filter(Boolean),
         providers: [],

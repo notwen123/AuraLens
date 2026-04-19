@@ -1,4 +1,4 @@
-import { Calendar, Inbox } from "lucide-react";
+import { Calendar, Inbox, BarChart3 } from "lucide-react";
 import { useParams } from "react-router-dom";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -14,7 +14,6 @@ import {
     SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
-// Menu items.
 const items = [
     {
         title: "Chat",
@@ -25,6 +24,11 @@ const items = [
         title: "Character Overview",
         url: "character",
         icon: Calendar,
+    },
+    {
+        title: "AuraLens Dashboard",
+        url: "auralens",
+        icon: BarChart3,
     },
 ];
 

@@ -445,6 +445,75 @@ export class DirectClient {
             }
         );
 
+        // ── AuraLens Audit Dashboard API ──────────────────────────────────────
+
+        this.app.get(
+            "/api/:agentId/auralens/treasury",
+            async (req: express.Request, res: express.Response) => {
+                const agentId = req.params.agentId;
+                let runtime = this.agents.get(agentId) ??
+                    Array.from(this.agents.values()).find(
+                        (a) => a.character.name.toLowerCase() === agentId.toLowerCase()
+                    );
+                if (!runtime) { res.status(404).json({ error: "Agent not found" }); return; }
+                try {
+                    const { getTreasuryState } = await import("@elizaos/plugin-bnb-auralens");
+                    const state = await getTreasuryState(runtime);
+                    res.json(state);
+                } catch (err: any) {
+                    res.status(500).json({ error: err.message });
+                }
+            }
+        );
+
+        this.app.get(
+            "/api/:agentId/auralens/trades",
+            async (req: express.Request, res: express.Response) => {
+                const agentId = req.params.agentId;
+                let runtime = this.agents.get(agentId) ??
+                    Array.from(this.agents.values()).find(
+                        (a) => a.character.name.toLowerCase() === agentId.toLowerCase()
+                    );
+                if (!runtime) { res.status(404).json({ error: "Agent not found" }); return; }
+                try {
+                    const { getRecentTrades } = await import("@elizaos/plugin-bnb-auralens");
+                    const trades = await getRecentTrades(runtime, 50);
+                    res.json(trades);
+                } catch (err: any) {
+                    res.status(500).json({ error: err.message });
+                }
+            }
+        );
+
+        this.app.post(
+            "/api/:agentId/auralens/trade",
+            async (req: express.Request, res: express.Response) => {
+                const agentId = req.params.agentId;
+                let runtime = this.agents.get(agentId) ??
+                    Array.from(this.agents.values()).find(
+                        (a) => a.character.name.toLowerCase() === agentId.toLowerCase()
+                    );
+                if (!runtime) { res.status(404).json({ error: "Agent not found" }); return; }
+                res.json({ status: "cycle_triggered", message: "Trade cycle started in background" });
+                // Fire and forget
+                const { tradeCycleAction } = await import("@elizaos/plugin-bnb-auralens");
+                const userId = stringToUuid("dashboard-user");
+                const roomId = stringToUuid("auralens-dashboard-room");
+                await runtime.ensureConnection(userId, roomId, "dashboard", "Dashboard", "direct");
+                const memory: Memory = {
+                    id: stringToUuid(Date.now().toString()),
+                    agentId: runtime.agentId,
+                    userId,
+                    roomId,
+                    content: { text: "Run trade cycle", source: "dashboard" },
+                    createdAt: Date.now(),
+                };
+                tradeCycleAction.handler(runtime, memory, null as any, {}, (r) => {
+                    elizaLogger.info(`[Dashboard] Trade cycle: ${r.text}`);
+                }).catch((e) => elizaLogger.error("[Dashboard] Trade cycle error:", e));
+            }
+        );
+
         this.app.post("/:agentId/speak", async (req, res) => {
             const agentId = req.params.agentId;
             const roomId = stringToUuid(req.body.roomId ?? "default-room-" + agentId);
