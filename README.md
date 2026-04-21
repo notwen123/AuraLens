@@ -3,10 +3,6 @@
 **The first transparent, self-sustaining AI hedge agent on BNB Chain.**  
 AuraLens autonomously manages its own treasury, trades decentralized perpetuals on MYX V2, pays its own infrastructure bills, issues on-chain auditable Profit-Sharing Invoices, and buys back its own $AURA token — all without any human intervention.
 
-**Live Demo Video**: [Watch 90-second demo](https://youtu.be/PLACEHOLDER)  
-**Deployed Token**: [$AURA on Four.meme](https://four.meme/token/0xAURA-ADDRESS-HERE)  
-**DoraHacks BUIDL**: [Link to submission](https://dorahacks.io/hackathon/fourmeme-ai-sprint/buidl/PLACEHOLDER)  
-**GitHub Repo**: [github.com/yourusername/auralens](https://github.com/yourusername/auralens)
 
 ## Problem
 
